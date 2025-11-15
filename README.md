@@ -1,0 +1,549 @@
+[explore-jawa-timur.html](https://github.com/user-attachments/files/23563364/explore-jawa-timur.html)
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Explore Jawa Timur — Budaya & Pariwisata</title>
+  <meta name="description" content="Explore Jawa Timur — profil, budaya, pariwisata, geografi, dan fakta unik. Desain modern, interaktif, dan ramah pengguna." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+:root{
+  --bg:#ffffff;            /* FULL PUTIH */
+  --card:#ffffff;
+  --muted:#52607a;
+  --accent:#0061ff;
+  --accent-2:#F4B400;
+  --glass: rgba(255,255,255,0.6);
+  --radius:14px;
+  --max-width:1150px;
+  --shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
+  --shadow-md: 0 12px 28px rgba(16,24,40,0.08);
+  --ease: cubic-bezier(.2,.9,.2,1);
+}
+
+[data-theme="dark"]{
+  --bg:#071022;            /* Tetap gelap */
+  --card:#0c1521;
+  --muted:#9fb1d0;
+  --glass: rgba(255,255,255,0.03);
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.6);
+  --shadow-md: 0 12px 28px rgba(0,0,0,0.6);
+}
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:linear-gradient(180deg,var(--bg),#ffffff);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background .35s var(--ease), color .35s var(--ease);
+    }
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{
+      position:fixed;top:12px;left:0;right:0;z-index:60;
+      display:flex;justify-content:center;
+      pointer-events:none;
+    }
+    .nav-wrap{width:100%;max-width:var(--max-width);display:flex;align-items:center;justify-content:space-between;gap:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      backdrop-filter: blur(8px);
+      padding:10px 14px;border-radius:12px;box-shadow:var(--shadow-sm);pointer-events:auto;
+      transition:background .25s var(--ease);
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:12px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{font-weight:600;color:var(--muted);padding:8px 10px;border-radius:10px;display:inline-block;transition:background .2s,var(--ease);font-size:14px}
+    nav a.active, nav a:hover{background:rgba(0,97,255,0.08);color:var(--accent)}
+    .controls{display:flex;gap:8px;align-items:center}
+
+    .toggle{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700}
+
+    /* === AUDIO BUTTON === */
+    .audio-btn{
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.06);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:16px;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:6px;
+      transition:0.25s var(--ease);
+    }
+    .audio-btn:hover{
+      background:rgba(0,97,255,0.08);
+      color:var(--accent);
+      transform:scale(1.08);
+    }
+    /* animasi ikon saat ON */
+    .audio-playing{
+      animation: audioPulse 0.9s infinite ease-in-out;
+      color:var(--accent);
+    }
+    @keyframes audioPulse{
+      0%{ transform:scale(1); }
+      50%{ transform:scale(1.18); }
+      100%{ transform:scale(1); }
+    }
+
+    /* Hero */
+    .hero{padding:120px 0 36px}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}.hero{padding-top:100px}}
+    h1{font-family:'Poppins',sans-serif;color:var(--accent);font-size:34px;margin:0 0 10px}
+    .lead{font-size:15px;color:var(--muted);line-height:1.6}
+    .cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#004ad8);color:white;padding:10px 16px;border-radius:12px;border:none;cursor:pointer;font-weight:700;box-shadow:0 8px 24px rgba(0,97,255,0.12);transition:transform .22s var(--ease)}
+    .btn-primary:hover{transform:translateY(-3px)}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:10px 14px;border-radius:12px}
+
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-md)}
+    .stats{display:flex;gap:12px;margin-top:14px}
+    .stat{flex:1;text-align:center;padding:8px 6px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2))}
+
+    /* sections */
+    section{padding:60px 0}
+    h2{font-family:'Poppins',sans-serif;color:var(--accent);margin:0 0 10px;font-size:22px}
+    .muted{color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .35s var(--ease);box-shadow:var(--shadow-sm)}
+    .gallery img:hover{transform:scale(1.04)}
+
+    .place{display:flex;gap:12px;align-items:flex-start}
+    .place img{width:120px;height:80px;object-fit:cover;border-radius:10px}
+
+    /* map placeholder */
+    .map-placeholder{height:220px;border-radius:12px;background:linear-gradient(135deg,#ffffff,#fff5d9);display:flex;align-items:center;justify-content:center;color:#425c7a;font-weight:700}
+
+    /* lightbox */
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:120}
+    .lightbox img{max-width:96%;max-height:92%;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+
+    /* back to top */
+    #toTop{position:fixed;right:18px;bottom:18px;background:var(--accent);color:white;border:none;padding:12px;border-radius:12px;cursor:pointer;box-shadow:0 8px 28px rgba(0,97,255,0.18);display:none;z-index:90}
+
+    /* reveal animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease), transform .6s var(--ease)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* small responsive */
+    @media(max-width:560px){nav ul{display:none} .nav-wrap{padding:12px}}
+  </style>
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header>
+    <div class="nav-wrap container" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <img src="logo-explore.png" alt="Logo Explore Jawa Timur" class="logo" loading="lazy">
+        <div>
+          <div style="font-weight:700;color:var(--accent)">Explore Jawa Timur</div>
+          <div style="font-size:12px;color:var(--muted)">Bumi Majapahit</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <nav>
+          <ul id="mainNav">
+            <li><a href="#profil" data-target="profil">Profil</a></li>
+            <li><a href="#budaya" data-target="budaya">Budaya</a></li>
+            <li><a href="#pariwisata" data-target="pariwisata">Pariwisata</a></li>
+            <li><a href="#geografi" data-target="geografi">Geografi</a></li>
+            <li><a href="#fakta" data-target="fakta">Fakta</a></li>
+            <button id="musicBtn" class="audio-btn">🔇</button>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container" style="padding-top:26px;">
+
+    <!-- HERO -->
+    <section class="hero" id="profil">
+      <div class="hero-grid">
+        <div>
+          <h1 class="reveal">Selamat Datang di Jawa Timur</h1>
+          <p class="lead reveal" style="transition-delay:.05s">Temukan keindahan budaya, alam, dan sejarah dari provinsi kaya warna — dari Gunung Semeru hingga pantai selatan yang memukau.</p>
+          <p class="lead reveal" style="transition-delay:.05s">Jawa Timur merupakan salah satu provinsi paling strategis di Indonesia, dengan Surabaya sebagai ibu kota dan pusat ekonomi utama di kawasan timur. Provinsi ini dikenal sebagai lumbung pangan dan industri, menyumbang porsi signifikan terhadap PDB nasional berkat sektor pertanian, manufaktur, dan perdagangan yang kuat, didukung oleh infrastruktur vital seperti Pelabuhan Tanjung Perak dan Bandara Internasional Juanda. Secara geografis, Jawa Timur memiliki keragaman yang luar biasa, mulai dari dataran rendah subur hingga kawasan pegunungan berapi aktif, menjadikannya rumah bagi destinasi wisata ikonis seperti Gunung Bromo dan kawah api biru Ijen. Keragaman ini juga tercermin dalam masyarakatnya, yang didominasi oleh Suku Jawa dan Suku Madura, melahirkan kekayaan budaya, bahasa, dan tradisi lokal yang unik. </p>
+          <div class="cta reveal" style="transition-delay:.1s">
+            <button class="btn-primary" onclick="document.getElementById('pariwisata').scrollIntoView({behavior:'smooth'})">Jelajahi Destinasi</button>
+            <button class="btn-ghost" onclick="document.getElementById('budaya').scrollIntoView({behavior:'smooth'})">Pelajari Budaya</button>
+          </div>
+
+          <div class="card stats reveal" style="margin-top:18px;display:flex;gap:12px;transition-delay:.15s">
+            <div class="stat">
+              <div style="font-size:18px;font-weight:700;color:var(--accent)"><span class="counter" data-target="38">0</span></div>
+              <div class="muted">Kab/Kota</div>
+            </div>
+            <div class="stat">
+              <div style="font-size:18px;font-weight:700;color:var(--accent)"><span class="counter" data-target="41919906">0</span></div>
+              <div class="muted">Penduduk</div>
+            </div>
+            <div class="stat">
+              <div style="font-size:18px;font-weight:700;color:var(--accent)"><span style="font-size:18px;color:var(--muted)">Surabaya</span></div>
+              <div class="muted">Ibu Kota</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="transition-delay:.18s">
+          <h3 style="margin-top:0">Profil Singkat</h3>
+          <p class="muted">Jawa Timur adalah provinsi bersejarah dengan pusat kebudayaan Majapahit. Kaya lanskap: gunung, dataran tinggi, dan pantai.</p>
+          <p class="muted" style="margin:6px 0 8px 0">Luas wilayah: ±47.800 km² — 29 kabupaten & 9 kota.</p>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+            <iframe src="https://www.youtube.com/embed/ND4cHN7k5SA" title="Profil Jawa Timur" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUDAYA -->
+    <section id="budaya" class="reveal" style="transition-delay:.05s">
+      <h2>Budaya Daerah</h2>
+      <p class="muted">Beragam tradisi, pakaian, tarian, musik, dan kuliner yang hidup dan masih dirayakan.</p>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card reveal" style="transition-delay:.08s">
+          <h4>Rumah Adat</h4>
+          <p class="muted">Joglo, limasan, dan rumah tradisional lain menampilkan ukiran dan filosofi lokal.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:.12s">
+          <h4>Pakaian Tradisional</h4>
+          <p class="muted">Kebaya, beskap, dan kain tradisional tampil di upacara adat dan pernikahan.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:.16s">
+          <h4>Tarian & Musik</h4>
+          <p class="muted">Reog Ponorogo, Tari Remo, dan gamelan sebagai identitas seni panggung Jawa Timur.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:.20s">
+          <h4>Makanan Khas</h4>
+          <p class="muted">Rawon, Rujak Cingur, Lontong Balap — warisan kuliner yang kuat rasa dan sejarahnya.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:.24s">
+          <h4>Lagu & Sastra</h4>
+          <p class="muted">Lagu-lagu daerah dan pantun tradisional masih diwariskan turun-temurun.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARIWISATA -->
+    <section id="pariwisata" class="reveal" style="transition-delay:.05s">
+      <h2>Pariwisata — Destinasi Populer</h2>
+      <p class="muted">Beberapa destinasi terbaik yang wajib dikunjungi — lengkap dengan deskripsi singkat.</p>
+
+      <div class="gallery" style="margin-top:14px">
+        <img src="gunungbromo.jpg" alt="Gunung Bromo" data-title="Gunung Bromo" loading="lazy" onclick="openLightbox(this)">
+        <img src="pantaiklayar.jpg" alt="Pantai Klayar" data-title="Pantai Klayar" loading="lazy" onclick="openLightbox(this)">
+        <img src="tumpaksewu.jpg" alt="Air Terjun Tumpak Sewu" data-title="Tumpak Sewu" loading="lazy" onclick="openLightbox(this)">
+        <img src="batunight.jpg" alt="Batu Night Spectacular" data-title="Batu Night Spectacular" loading="lazy" onclick="openLightbox(this)">
+      </div>
+
+<div style="margin-top:18px;display:grid;gap:12px">
+
+  <div class="card reveal" style="transition-delay:.08s">
+    <div class="place">
+      <img src="gunungbromo.jpg" alt="Bromo" loading="lazy" onclick="openLightbox(this)">
+      <div>
+        <h4 style="margin:0;color:var(--accent)">Gunung Bromo</h4>
+        <p class="muted" style="margin:6px 0 0 0">
+Gunung Bromo adalah salah satu gunung berapi aktif paling terkenal di dunia dan merupakan bagian dari Taman Nasional Bromo Tengger Semeru. Keunikan utama Bromo adalah keberadaannya di tengah lautan pasir vulkanik yang luas, yang oleh penduduk setempat disebut "Segara Wedi" atau Lautan Pasir. Selain dikenal sebagai tempat terbaik untuk menyaksikan matahari terbit yang spektakuler, Bromo juga merupakan gunung suci bagi Suku Tengger.        </p>
+        <p><strong>Akses:</strong> Kecamatan Sukapura, Probolinggo.</p>
+
+        <!-- VIDEO KECIL -->
+        <div class="yt-small">
+          <iframe 
+            src="https://www.youtube.com/embed/UOw3uN487HE?si=kQc2CX2Sm98Wtvj5"
+            allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="card reveal" style="transition-delay:.12s">
+    <div class="place">
+      <img src="Pantai-Klayar.jpg" alt="Pantai Klayar" loading="lazy" onclick="openLightbox(this)">
+      <div>
+        <h4 style="margin:0;color:var(--accent)">Pantai Klayar (Pacitan)</h4>
+        <p class="muted" style="margin:6px 0 0 0">
+Pantai Klayar yang terletak di Pacitan terkenal dengan formasi batu karang raksasa yang menawan, menjadikannya salah satu pantai tercantik di pesisir selatan Jawa. Keunikan paling menarik dari Pantai Klayar adalah fenomena alam yang disebut "Seruling Samudra". Fenomena ini terjadi ketika ombak menghantam celah sempit pada batu karang, mendorong air ke atas dan menghasilkan suara siulan yang indah, mirip seperti suara seruling.        </p>
+        <p><strong>Akses:</strong> Desa Sendang, Pacitan.</p>
+
+        <div class="yt-small">
+          <iframe 
+            src="https://www.youtube.com/embed/KUUZ8NoBa8k?si=VoxeR-hTYoQT5OlP"
+            allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="card reveal" style="transition-delay:.16s">
+    <div class="place">
+      <img src="tumpaksewu.jpg" alt="Tumpak Sewu" loading="lazy" onclick="openLightbox(this)">
+      <div>
+        <h4 style="margin:0;color:var(--accent)">Air Terjun Tumpak Sewu (Lumajang)</h4>
+        <p class="muted" style="margin:6px 0 0 0">
+Dijuluki sebagai "Niagara Mini" atau "Tebing Nirwana" di Indonesia, Air Terjun Tumpak Sewu menawarkan pemandangan yang megah dan berbeda. Keunikan air terjun ini terletak pada bentuknya yang menyerupai tirai air yang lebar, di mana aliran airnya yang sangat deras turun dari tebing melingkar setinggi sekitar 120 meter. Air terjun ini bukan hanya satu aliran, melainkan terdiri dari ribuan aliran kecil yang terlihat menyatu, memberikan kesan masif dan memukau dari ketinggian, sehingga sering diburu oleh para fotografer dari berbagai penjuru. Air Terjun Tumpak Sewu terletak di perbatasan Kabupaten Lumajang dan Kabupaten Malang.        </p>
+        <p><strong>Akses:</strong> Desa Sidomulyo, Pronojiwo, Lumajang.</p>
+
+        <div class="yt-small">
+          <iframe 
+            src="https://www.youtube.com/embed/Bjvm1zlZKGM?si=T_8zbHiz5nykCgSy"
+            allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card reveal" style="transition-delay:.20s">
+    <div class="place">
+      <img src="batunight.jpg" alt="BNS Malang" loading="lazy" onclick="openLightbox(this)">
+      <div>
+        <h4 style="margin:0;color:var(--accent)">Batu Night Spectacular</h4>
+        <p class="muted" style="margin:6px 0 0 0">
+destinasi wisata malam yang unik, terletak di Kota Batu (dekat Malang) dengan konsep pasar malam modern. Daya tarik utamanya adalah suasana malam yang fantastis dengan atraksi cahaya dan lampion yang spektakuler. BNS sangat terkenal dengan Lampion Garden-nya, sebuah taman yang dipenuhi ribuan lampion berwarna-warni yang membentuk aneka karakter dan instalasi, menciptakan pemandangan yang sangat romantis dan instagenic. Selain itu, BNS juga menyajikan pertunjukan Air Mancur Menari yang diiringi musik dan laser, memberikan hiburan visual yang memukau bagi pengunjung dari segala usia.        </p>
+        <p><strong>Akses:</strong> Kota Batu, Malang.</p>
+
+        <div class="yt-small">
+          <iframe 
+            src="https://www.youtube.com/embed/HW_fzgz2BE4?si=2mBD7Bf6kLcoZakN"
+            allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+    </section>
+
+    <!-- GEOGRAFI -->
+    <section id="geografi" class="reveal" style="transition-delay:.05s">
+      <h2>Geografi & Alam</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:12px">
+        <div class="card reveal" style="transition-delay:.08s">
+          <h4>Bentang Alam</h4>
+          <p class="muted">Jawa Timur memiliki gunung berapi aktif (Semeru, Bromo), dataran tinggi, hutan, dan garis pantai panjang yang menciptakan ekosistem beragam.</p>
+          <h4 style="margin-top:12px">Iklim</h4>
+          <p class="muted">Tropis; musim hujan (Okt–Mar) dan kemarau (Apr–Sep). Suhu berkisar 22–34°C, bervariasi menurut ketinggian.</p>
+          <h4 style="margin-top:12px">Flora & Fauna</h4>
+          <p class="muted">banteng Jawa, lutung Jawa, anggrek, dan pohon jati.</p>
+        </div>
+
+        <div class="card reveal" style="transition-delay:.12s">
+          <h4>Peta & Lokasi</h4>
+          <!-- Accurate map embed centered on East Java -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126543.81900663378!2d112.654677!3d-7.977925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e3ee5d836a63%3A0x3027a76e352be60!2sJawa%20Timur!5e0!3m2!1sid!2sid!4v1730979600000!5m2!1sid!2sid"
+            width="100%" height="260" style="border:0;border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Jawa Timur"></iframe>
+
+          <p class="muted" style="margin-top:8px;font-size:13px">
+            Tips: klik + tahan pada peta atau gunakan Google Maps untuk rute detail ke destinasi seperti Bromo, Tumpak Sewu, atau Pantai Klayar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAKTA -->
+    <section id="fakta" class="reveal" style="transition-delay:.05s">
+      <h2>Fakta Unik & Tradisi</h2>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="card reveal" style="transition-delay:.08s"><h4>Julukan</h4><p class="muted">Bumi Majapahit — merujuk pada kejayaan historis Kerajaan Majapahit. Jawa Timur memegang peranan krusial dalam sejarah Nusantara karena merupakan lokasi berdirinya dua kerajaan Hindu-Buddha terbesar dan paling berpengaruh. Wilayah Malang adalah pusat dari Kerajaan Singosari pada abad ke-13, sedangkan daerah Trowulan (Mojokerto) adalah pusat dari Kemaharajaan Majapahit yang mencapai puncak kejayaannya pada abad ke-14 dan menguasai hampir seluruh wilayah Asia Tenggara.</p></div>
+        <div class="card reveal" style="transition-delay:.12s"><h4>Festival</h4><p class="muted">Jember Fashion Carnaval, Festival Reog Ponorogo, Malang Flower Carnival.</p></div>
+        <div class="card reveal" style="transition-delay:.16s"><h4>Upacara Adat</h4><p class="muted">Larung sesaji, sedekah laut, dan ritual panen masih dijalankan di beberapa komunitas pesisir dan agraris.</p></div>
+        <div class="card reveal" style="transition-delay:.20s"><h4>Hari Jadi</h4><p class="muted">12 Oktober — Hari Jadi Provinsi Jawa Timur.</p></div>
+        <div class="card reveal" style="transition-delay:.24s"><h4>Fakta Menarik</h4><p class="muted">Gunung Semeru adalah titik tertinggi di Pulau Jawa (3.676 m). Jawa Timur merupakan provinsi dengan populasi besar dan ekonomi beragam.</p></div>
+        <div class="card reveal" style="transition-delay:.20s"><h4>Reog Ponorogo</h4><p class="muted">Seni pertunjukan ikonik dari Jawa Timur yang berasal dari Kabupaten Ponorogo. Ciri khas utama pertunjukan ini adalah Dadak Merak, sebuah topeng kepala singa besar yang dihiasi bulu merak yang spektakuler. Topeng yang beratnya bisa mencapai puluhan kilogram ini secara tradisional diangkat dan dimainkan hanya dengan menggunakan kekuatan gigi oleh penarinya yang disebut Warok, melambangkan kekuatan mistis dan keberanian yang luar biasa.</p></div>
+        <div class="card reveal" style="transition-delay:.20s"><h4>Yadnya Kasada</h4><p class="muted">Upacara adat keagamaan tahunan yang sakral bagi Suku Tengger, masyarakat Hindu yang tinggal di kawasan pegunungan Bromo-Tengger-Semeru. Ritual ini dilakukan dengan cara melemparkan sesajen berupa hasil bumi, ternak, dan persembahan lain ke dalam kawah Gunung Bromo. Upacara ini merupakan bentuk perwujudan syukur kepada Sang Hyang Widhi Wasa dan untuk mengenang legenda leluhur mereka, yaitu Roro Anteng dan Joko Seger, dengan harapan mendapat keselamatan dan kemakmuran.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding:28px 0;margin-top:30px;background:linear-gradient(180deg, rgba(245,246,250,0.8), rgba(250,250,250,0.6))">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div>
+        <strong style="color:var(--accent)">Explore Jawa Timur</strong><br>
+        <small class="muted">Dibuat untuk proyek kelompok 2 — © 2025</small>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="background:var(--glass);padding:6px 10px;border-radius:8px;font-weight:700">Budaya</span>
+        <span style="background:var(--glass);padding:6px 10px;border-radius:8px;font-weight:700">Pariwisata</span>
+        <span style="background:var(--glass);padding:6px 10px;border-radius:8px;font-weight:700">Geografi</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" onclick="closeLightbox(event)">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <!-- Back to top -->
+  <button id="toTop" aria-label="Kembali ke atas">↑</button>
+
+  <script>
+
+    /* Lightbox */
+    function openLightbox(img){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      lbImg.src = img.src;
+      lbImg.alt = img.getAttribute('data-title') || img.alt || '';
+      lb.style.display = 'flex';
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(e){
+      if(e.target.id === 'lightbox' || e.target.id === 'lightboxImg'){
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox').setAttribute('aria-hidden','true');
+      }
+    }
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') { document.getElementById('lightbox').style.display = 'none'; }})
+
+    /* Back to top */
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400) toTop.style.display = 'block';
+      else toTop.style.display = 'none';
+      highlightNavOnScroll();
+    });
+    toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+    /* IntersectionObserver for reveal animations */
+    const reveals = document.querySelectorAll('.reveal, .hero .reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.12});
+    reveals.forEach(r => io.observe(r));
+
+    /* Smooth scroll for nav links and active state */
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    navLinks.forEach(a => {
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    /* Highlight nav while scrolling */
+    const sections = [...document.querySelectorAll('main section[id]')];
+    function highlightNavOnScroll(){
+      const fromTop = window.scrollY + 120;
+      let currentId = '';
+      for(const s of sections){
+        if(s.offsetTop <= fromTop) currentId = s.id;
+      }
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+      });
+    }
+    highlightNavOnScroll();
+
+    /* Animated counters */
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(el => {
+      const target = +el.getAttribute('data-target');
+      let started = false;
+      const run = () => {
+        if(started) return;
+        started = true;
+        const duration = 1400;
+        const start = performance.now();
+        const initial = 0;
+        function tick(now){
+          const progress = Math.min((now - start) / duration, 1);
+          const val = Math.floor(progress * (target - initial) + initial);
+          el.textContent = val.toLocaleString('id');
+          if(progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString('id');
+        }
+        requestAnimationFrame(tick);
+      };
+      // trigger when visible
+      const obs = new IntersectionObserver(entries => {
+        if(entries[0].isIntersecting) { run(); obs.disconnect(); }
+      }, {threshold:0.2});
+      obs.observe(el);
+    });
+
+    /* Accessibility improvement: focus outlines for keyboard users */
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Tab') document.documentElement.style.scrollBehavior = 'smooth';
+    });
+
+    /* Mobile: simple menu fallback (hide/show nav) - optional */
+    // NOTE: nav collapses on very small widths; you can implement a hamburger if needed.
+
+    /* Misc: ensure images have alt; basic graceful degradation if images missing */
+    document.querySelectorAll('img').forEach(img=>{
+      img.addEventListener('error', () => {
+        img.style.objectFit = 'contain';
+        img.style.background = '#eee';
+      });
+    });
+  </script>
+
+  <audio id="backsound" loop>
+  <source src="bs_donkgedang.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById("backsound");
+  const btn = document.getElementById("musicBtn");
+
+  let playing = false;
+
+  btn.addEventListener("click", () => {
+    if (!playing) {
+      audio.volume = 0.3;
+      audio.play();
+      playing = true;
+      btn.innerHTML = "🔊";
+      btn.classList.add("audio-playing");
+    } else {
+      audio.pause();
+      playing = false;
+      btn.innerHTML = "🔇";
+      btn.classList.remove("audio-playing");
+    }
+  });
+</script>
+
+</body>
+</html>
